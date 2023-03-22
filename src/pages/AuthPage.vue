@@ -1,3 +1,5 @@
 <template>
-  <h1>Authentication</h1>
+  <section>
+    <h1>Authentication</h1>
+  </section>
 </template>
