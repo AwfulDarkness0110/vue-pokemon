@@ -10,6 +10,11 @@ export const router = createRouter({
       children: [
         {
           path: '',
+          name: 'PokemonPage',
+          component: () => import('@/pages/HomePage.vue')
+        },
+        {
+          path: 'auth',
           name: 'AuthPage',
           component: () => import('@/pages/AuthPage.vue'),
         }
