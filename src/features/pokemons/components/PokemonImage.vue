@@ -3,7 +3,7 @@ import { computed } from '@vue/reactivity';
 import { POKEAPI_IMAGE_ENDPOINT } from '@/constants'
 
 const props = defineProps<{ pokemonId: number }>()
-const imageUrl = computed(() => POKEAPI_IMAGE_ENDPOINT.replace(':pokemonId', props.pokemonId))
+const imageUrl = computed(() => POKEAPI_IMAGE_ENDPOINT.replace(':pokemonId', String(props.pokemonId)))
 </script>
 
 <template>
