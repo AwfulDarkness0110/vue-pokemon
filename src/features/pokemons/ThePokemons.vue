@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import PokemonList from './PokemonList.vue'
+import PokemonList from './components/PokemonList.vue'
 import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import { usePokemonStore } from './stores'
@@ -7,7 +7,7 @@ import { usePokemonStore } from './stores'
 const store = usePokemonStore()
 const { result, loading, error } = storeToRefs(store)
 const { loadMore } = store
-const total = computed(() => result?.value?.pokemon_v2_pokemon?.length ?? 0);
+const total = computed(() => result?.value?.pokemon_v2_pokemon?.length ?? 0)
 
 </script>
 
