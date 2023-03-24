@@ -57,6 +57,6 @@ function loadMore() {
       </v-col>
     </v-row>
 
-    <v-btn class="mt-8" @click="loadMore">Load More</v-btn>
+    <v-btn class="mt-8" @click="loadMore" :loading="loading">Load More</v-btn>
   </v-container>
 </template>
