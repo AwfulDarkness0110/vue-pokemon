@@ -30,8 +30,8 @@ const sprites = computed(() => result.value.pokemon_v2_pokemon.map((s) => ({
   <v-container v-else-if="result">
     <v-row dense>
       <v-col cols="12" md="4" v-for="pokemon in result.pokemon_v2_pokemon" :key="pokemon.id">
-        <v-card>
-          <v-img
+        <v-card class="mx-auto">
+          <v-img class="align-end"
             :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`">
             <v-card-title v-text="pokemon.name"></v-card-title>
           </v-img>
