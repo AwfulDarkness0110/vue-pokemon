@@ -1,48 +1,14 @@
 <script setup lang="ts">
-import { useQuery } from '@vue/apollo-composable'
-import gql from 'graphql-tag'
 import PokemonList from './PokemonList.vue'
-import { computed } from 'vue';
+import { computed } from 'vue'
+import { storeToRefs } from 'pinia'
+import { usePokemonStore } from './stores'
 
-const { result, loading, error, fetchMore } = useQuery(gql`
-  query getPokemons ($offset: Int, $limit: Int) {
-    pokemon_v2_pokemon(offset: $offset, limit: $limit) {
-      id
-      name
-      weight
-      height
-      is_default
-      pokemon_v2_pokemonsprites {
-        sprites
-      }
-    }
-  }`, () => ({
-  offset: 0,
-  limit: 20
-}))
-
+const store = usePokemonStore()
+const { result, loading, error } = storeToRefs(store)
+const { loadMore } = store
 const total = computed(() => result?.value?.pokemon_v2_pokemon?.length ?? 0);
 
-function loadMore() {
-  fetchMore({
-    variables: {
-      offset: result.value.pokemon_v2_pokemon.length
-    },
-    updateQuery: (previousResult, { fetchMoreResult }) => {
-      // No new feed posts
-      if (!fetchMoreResult) return previousResult
-
-      // Concat previous feed with new feed posts
-      return {
-        ...previousResult,
-        pokemon_v2_pokemon: [
-          ...previousResult.pokemon_v2_pokemon,
-          ...fetchMoreResult.pokemon_v2_pokemon
-        ]
-      }
-    }
-  })
-}
 </script>
 
 <template>
