@@ -1,6 +1,16 @@
-import { createApp } from 'vue'
-import './style.css'
+import { createApp, h, provide } from 'vue'
+import { DefaultApolloClient } from '@vue/apollo-composable'
+import './style.scss'
 import App from './App.vue'
-import { router, pinia } from './plugins'
+import { router, pinia, vuetify, apolloClient } from './plugins'
 
-createApp(App).use(pinia).use(router).mount('#app')
+createApp({
+  setup() {
+    provide(DefaultApolloClient, apolloClient)
+  },
+  render: () => h(App)
+})
+  .use(vuetify)
+  .use(pinia)
+  .use(router)
+  .mount('#app')
