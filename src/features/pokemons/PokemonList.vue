@@ -45,7 +45,7 @@ function loadMore() {
 <template>
   <p v-if="loading">Loading...</p>
   <p v-else-if="error">{{ error }}</p>
-  <v-container v-else-if="result">
+  <v-container v-if="result">
     <v-row dense>
       <v-col cols="12" md="4" v-for="pokemon in result.pokemon_v2_pokemon" :key="pokemon.id">
         <v-card class="mx-auto">
