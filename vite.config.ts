@@ -1,13 +1,16 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vuetify from 'vite-plugin-vuetify'
+import { join } from 'path'
+
+const projectSourceDir = join(__dirname, 'src')
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue(), vuetify({ styles: 'sass' })],
   resolve: {
     alias: {
-      '@': '/src'
+      '@': projectSourceDir
     }
   }
 })
