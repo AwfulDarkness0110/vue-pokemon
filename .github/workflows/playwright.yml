@@ -22,6 +22,10 @@ jobs:
 
     - name: Run Playwright tests
       run: npx playwright tests
+      with:
+        env:
+          # This might depend on your test-runner/language binding
+          PLAYWRIGHT_TEST_BASE_URL: ${{ github.event.deployment_status.target_url }}
 
     - uses: actions/upload-artifact@v3
       if: always()
@@ -29,6 +33,3 @@ jobs:
         name: playwright-report
         path: playwright-report/
         retention-days: 30
-        env:
-          # This might depend on your test-runner/language binding
-          PLAYWRIGHT_TEST_BASE_URL: ${{ github.event.deployment_status.target_url }}
