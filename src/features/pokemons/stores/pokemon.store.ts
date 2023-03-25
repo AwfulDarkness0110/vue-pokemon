@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import { useQuery } from '@vue/apollo-composable'
 import gql from 'graphql-tag'
+import { reactive } from 'vue'
 
 export const usePokemonStore = defineStore('pokemonStore', () => {
 
@@ -42,5 +43,15 @@ export const usePokemonStore = defineStore('pokemonStore', () => {
     })
   }
 
-  return { result, loading, error, loadMore }
+  const favorites = reactive(new Set<number>())
+
+  const toggleFavorite = (pokemonId: number) => {
+    if (favorites.has(pokemonId)) {
+      favorites.delete(pokemonId)
+    } else {
+      favorites.add(pokemonId)
+    }
+  }
+
+  return { result, loading, error, loadMore, favorites, toggleFavorite }
 })
