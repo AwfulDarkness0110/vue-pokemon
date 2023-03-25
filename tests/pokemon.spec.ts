@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test('test', async ({ page }) => {
-  await page.goto(process.env.PLAYWRIGHT_TEST_BASE_URL ?? 'http://localhost:5173/');
+  await page.goto('/');
   await page.getByRole('heading', { name: 'Pokemon' });
   await page.getByText('20 pokemons in the list');
 
