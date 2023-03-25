@@ -8,7 +8,8 @@
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
     "lint": "eslint src/**/*.{ts,vue}",
-    "lint:fix": "eslint --fix src/**/*.{ts,vue}"
+    "lint:fix": "eslint --fix src/**/*.{ts,vue}",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "@vue/apollo-composable": "^4.0.0-beta.4",
@@ -29,6 +30,7 @@
   },
   "devDependencies": {
     "@mdi/font": "^7.2.96",
+    "@playwright/test": "^1.32.1",
     "@typescript-eslint/eslint-plugin": "^5.55.0",
     "@vitejs/plugin-vue": "^4.1.0",
     "eslint": "^8.36.0",
