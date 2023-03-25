@@ -12,10 +12,12 @@ const total = computed(() => result?.value?.pokemon_v2_pokemon?.length ?? 0)
 </script>
 
 <template>
-  <p v-if="loading">Loading...</p>
-  <p v-else-if="error">{{ error }}</p>
+  <v-progress-circular indeterminate v-if="loading" :size="62" :width="7">
+    <p class="d-sr-only">Loading...</p>
+  </v-progress-circular>
+  <v-alert v-else-if="error" type="error" icon="$error" :title="error.name" :text="error.message"></v-alert>
   <p v-if="result">{{ total }} pokemons</p>
-  <pokemon-list :pokemons="result?.pokemon_v2_pokemon" :loading="loading" :error="error?.message">
+  <pokemon-list :pokemons="result?.pokemon_v2_pokemon">
     <v-btn class="mt-8" @click="loadMore" :loading="loading">Load More</v-btn>
   </pokemon-list>
 </template>

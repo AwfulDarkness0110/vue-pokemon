@@ -4,16 +4,12 @@ import PokemonImage from './PokemonImage.vue';
 
 interface Props {
   pokemons?: Pokemon_V2_Pokemon[],
-  loading?: boolean,
-  error?: string
 }
 
 defineProps<Props>()
 </script>
 
 <template>
-  <p v-if="loading">Loading...</p>
-  <p v-else-if="error">{{ error }}</p>
   <v-container v-if="pokemons">
     <v-row dense>
       <v-col cols="12" md="4" v-for="pokemon in pokemons" :key="pokemon.id">
