@@ -16,7 +16,7 @@ export const router = createRouter({
         {
           path: 'auth',
           name: 'AuthPage',
-          component: () => import('@/pages/AuthPage.vue'),
+          component: () => import('@/pages/AuthPage.vue')
         }
       ]
     }
