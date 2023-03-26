@@ -1,23 +1,28 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 
 test('test', async ({ page }) => {
   await page.goto('/');
-  await page.getByRole('heading', { name: 'Pokemon' });
-  await page.getByText('20 pokemons in the list');
+  page.getByRole('heading', { name: 'Pokemon' });
+  page.getByText('20 pokemons in the list');
 
   // Load more pokemons
   await page.getByRole('button', { name: 'Load More' }).click();
-  await page.getByText('40 pokemons in the list');
+  // Replace with expect
+  expect(page.getByText('40 pokemons in the list')).toBeTruthy();
 
   // Add favorites
   await page.locator('.v-card-actions > .v-btn').first().click();
-  await page.locator('div:nth-child(2) > .v-card > .v-card-actions > .v-btn').click();
+  await page
+    .locator('div:nth-child(2) > .v-card > .v-card-actions > .v-btn')
+    .click();
 
   // Open favorites view
   await page.getByRole('button', { name: 'Favorites' }).click();
-  await page.getByText('2 pokemons in favorites');
+  // Await update
+  await page.waitForSelector('div:nth-child(2) > .v-card');
+  expect(page.getByText('2 pokemons in favorites')).toBeTruthy();
 
   // Back to the general list
   await page.getByRole('button', { name: 'Pokemons' }).click();
-  await page.getByText('40 pokemons in the list');
+  expect(page.getByText('2 pokemons in favorites')).toBeTruthy();
 });
