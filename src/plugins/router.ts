@@ -1,5 +1,5 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import DefaultLayout from '@/layouts/DefaultLayout.vue'
+import DefaultLayout from '@/layouts/DefaultLayout.vue';
+import { createRouter, createWebHistory } from 'vue-router';
 
 export const router = createRouter({
   history: createWebHistory(),
@@ -11,14 +11,14 @@ export const router = createRouter({
         {
           path: '',
           name: 'PokemonPage',
-          component: () => import('@/pages/HomePage.vue')
+          component: () => import('@/pages/HomePage.vue'),
         },
         {
           path: 'auth',
           name: 'AuthPage',
-          component: () => import('@/pages/AuthPage.vue')
-        }
-      ]
-    }
-  ]
-})
+          component: () => import('@/pages/AuthPage.vue'),
+        },
+      ],
+    },
+  ],
+});

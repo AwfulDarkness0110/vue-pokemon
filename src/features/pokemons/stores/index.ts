@@ -1,1 +1,1 @@
-export * from './pokemon.store'
+export * from './pokemon.store';
