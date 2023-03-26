@@ -1,6 +1,6 @@
 <template>
   <v-app-bar :elevation="2" color="primary">
-    <template v-slot:prepend>
+    <template #prepend>
       <v-app-bar-nav-icon class="d-md-none"></v-app-bar-nav-icon>
     </template>
     <v-app-bar-title>

@@ -1,20 +1,19 @@
 <script setup lang="ts">
-import type { Pokemon_V2_Pokemon } from '../types'
-import PokemonImage from './PokemonImage.vue'
-import ToggleFavorite from './ToggleFavorite.vue'
+import type { Pokemon_V2_Pokemon } from '../types';
+import PokemonImage from './PokemonImage.vue';
+import ToggleFavorite from './ToggleFavorite.vue';
 
 interface Props {
-  pokemons?: Pokemon_V2_Pokemon[],
-
+  pokemons?: Pokemon_V2_Pokemon[];
 }
 
-defineProps<Props>()
+defineProps<Props>();
 </script>
 
 <template>
   <v-container v-if="pokemons">
     <v-row dense>
-      <v-col cols="12" md="4" v-for="pokemon in pokemons" :key="pokemon.id">
+      <v-col v-for="pokemon in pokemons" :key="pokemon.id" cols="12" md="4">
         <v-card class="mx-auto">
           <pokemon-image :pokemon-id="pokemon.id">
             <v-card-title>{{ pokemon.name }}</v-card-title>

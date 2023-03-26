@@ -11,9 +11,7 @@ import TheHeader from '@/components/TheHeader.vue';
           <router-view></router-view>
         </v-container>
       </v-main>
-      <footer>
-        ...
-      </footer>
+      <footer>...</footer>
     </v-layout>
   </v-card>
 </template>
